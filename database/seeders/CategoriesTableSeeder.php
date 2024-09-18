@@ -36,14 +36,14 @@ class CategoriesTableSeeder extends Seeder
     foreach($major_category_names as $major_category_name){
         if($major_category_name == "本"){
             foreach($book_categories as $book_category){
-                category::create([
+                Category::create([
                     "name" => $book_category,
                     "description" => $book_category,
                     "major_category_name" => $major_category_name
                 ]);
             }
         }
-    }
+    
     if ($major_category_name == 'コンピュータ') {
         foreach ($computer_categories as $computer_category) {
             Category::create([
@@ -64,6 +64,6 @@ class CategoriesTableSeeder extends Seeder
         }
     }
 }
-        
+}   
     }
 
