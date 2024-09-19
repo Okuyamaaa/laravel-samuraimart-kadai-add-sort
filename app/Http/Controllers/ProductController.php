@@ -20,7 +20,7 @@ class ProductController extends Controller
          $keyword = $request->keyword;
 
          $sorts = [
-            '新着順' =>'createaad_at desc',
+            '新着順' =>'created_at desc',
             '価格が安い順' =>'price asc',
          ];
 
@@ -35,7 +35,7 @@ class ProductController extends Controller
          }
 
         if ($request->category !== null) {
-            $products = Product::where('category_id', $request->category)->sortable($sort_query)->orderBy('cerated_at', 'desc')->paginate(12);
+            $products = Product::where('category_id', $request->category)->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(12);
             $total_count = Product::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
             $major_category = MajorCategory::find($category->major_category_id);
@@ -45,7 +45,7 @@ class ProductController extends Controller
              $category = null;
              $major_category = null;
         } else {
-            $products = Product::sortable($sort_query)->orderBy('create_at',  'desc')->paginate(12);
+            $products = Product::sortable($sort_query)->orderBy('created_at',  'desc')->paginate(12);
             $total_count = $products->total();
             $category = null;
             $major_category = null;

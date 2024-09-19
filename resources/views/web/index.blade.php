@@ -13,9 +13,9 @@
     @endif
 
     <div class="row">
-        <div class="col-md-2">
-            @component('components.sidebar', ['categories' => $categories, 'major_categories' => $major_categories])
-            @endcomponent
+    <div class="col-md-2">
+    @component('components.sidebar', ['categories' => $categories, 'major_categories' => $major_categories])
+    @endcomponent
         </div>
         <div class="col">
             <div class="mb-4">
