@@ -14,8 +14,8 @@
 
     <div class="row">
     <div class="col-md-2">
-    @component('components.sidebar', ['categories' => $categories, 'major_categories' => $major_categories])
-    @endcomponent
+            @component('components.sidebar', ['categories' => $categories, 'major_categories' => $major_categories])
+            @endcomponent
         </div>
         <div class="col">
             <div class="mb-4">
@@ -36,6 +36,11 @@
                                         <a href="{{ route('products.show', $recommend_product) }}" class="link-dark">{{ $recommend_product->name }}</a>
                                         <br>
                                         <label>￥{{ number_format($recommend_product->price) }}</label>
+                                        <br>
+                                        @if ($recommend_product->reviews()->exists())
+                             <span class="samuraimart-star-rating" data-rate="{{ round($recommend_product->reviews->avg('score') * 2) / 2 }}"></span>
+                             {{ round($recommend_product->reviews->avg('score'), 1) }}
+                             @endif
                                     </p>
                                 </div>
                             </div>
@@ -62,6 +67,11 @@
                                         <a href="{{ route('products.show', $recently_product) }}" class="link-dark">{{ $recently_product->name }}</a>
                                         <br>
                                         <label>￥{{ number_format($recently_product->price) }}</label>
+                                        <br>
+                                        @if ($recently_product->reviews()->exists())
+                             <span class="samuraimart-star-rating" data-rate="{{ round($recently_product->reviews->avg('score') * 2) / 2 }}"></span>
+                             {{ round($recently_product->reviews->avg('score'), 1) }}
+                             @endif
                                     </p>
                                 </div>
                             </div>
@@ -88,6 +98,11 @@
                                         <a href="{{ route('products.show', $featured_product) }}" class="link-dark">{{ $featured_product->name }}</a>
                                         <br>
                                         <label>￥{{ number_format($featured_product->price) }}</label>
+                                        <br>
+                                        @if ($featured_product->reviews()->exists())
+                             <span class="samuraimart-star-rating" data-rate="{{ round($featured_product->reviews->avg('score') * 2) / 2 }}"></span>
+                             {{ round($featured_product->reviews->avg('score'), 1) }}
+                             @endif
                                     </p>
                                 </div>
                             </div>
